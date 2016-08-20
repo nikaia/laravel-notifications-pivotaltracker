@@ -80,10 +80,10 @@ This method needs to return an array containing the access token of the authoriz
 
 ### Available methods
 
-* name(''): Accepts a string value for the story name.
-* description(''): Accepts a string value for the story description.
-* type(''): Accepts a string value for the story type (feature|bug|chore)
-* labels([]): Accepts an array of strings representing the story labels. 
+* `name('')`: Accepts a string value for the story name.
+* `description('')`: Accepts a string value for the story description.
+* `type('')`: Accepts a string value for the story type (feature|bug|chore)
+* `labels([])`: Accepts an array of strings representing the story labels. 
   * Alternatively you can pass the labels as arguments.
 
 ## Changelog
