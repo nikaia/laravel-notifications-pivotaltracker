@@ -40,39 +40,51 @@ You can install the package via composer:
 composer require laravel-notification-channels/pivotaltracker
 ```
 
-### Setting up the PivotalTracker service
-
-Add your PivotalTracker REST API Key to your `config/services.php`:
-
-```php
-// config/services.php
-...
-'pivotaltracker' => [
-    'key' => env('PIVOTALTRACKER_API_KEY'),
-],
-...
-```
-
 ## Usage
+
+Now you can use the channel in your via() method inside the notification:
+    
+    use NotificationChannels\PivotalTracker\PivotalTrackerChannel;
+    use NotificationChannels\PivotalTracker\PivotalTrackerMessage;
+    use Illuminate\Notifications\Notification;
+    
+    class AnApplicationEvent extends Notification
+    {
+        public function via($notifiable)
+        {
+            return [PivotalTrackerChannel::class];
+        }
+    
+        public function toTrello($notifiable)
+        {
+           return (new PivotalTrackerMessage('Something just occurred!'))
+                       ->description('This is a test for a notification via Pivotal Tracker.')
+                       ->type('bug')
+                       ->labels(['a_chore', 'just_a_test']);
+        }
+    }
 
 In order to let your Notification know which PivotalTracker user and project you are targeting, add the routeNotificationForPivotalTracker method to your Notifiable model.
 
 This method needs to return an array containing the access token of the authorized Pivotal Tracker user and the project ID to add the story to.
 
-public function routeNotificationForPivotalTracker()
-{
-    return [
-        'token' => 'NotifiableToken',
-        'projectId' => 'ThePivotalTrackerProjectID'
-    ];
-}
-
+    public function routeNotificationForPivotalTracker()
+    {
+        return [
+            'token' => 'NotifiableToken',
+            'projectId' => 'ThePivotalTrackerProjectID'
+        ];
+    }
 
 
 
 ### Available methods
 
-
+* name(''): Accepts a string value for the story name.
+* description(''): Accepts a string value for the story description.
+* type(''): Accepts a string value for the story type (feature|bug|chore)
+* labels([]): Accepts an array of strings representing the story labels. 
+  * Alternatively you can pass the labels as arguments.
 
 ## Changelog
 
