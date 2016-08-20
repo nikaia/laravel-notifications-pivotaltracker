@@ -1,11 +1,11 @@
 <?php
 
-namespace NotificationChannels\:channel_namespace\Exceptions;
+namespace NotificationChannels\PivotalTracker\Exceptions;
 
 class CouldNotSendNotification extends \Exception
 {
     public static function serviceRespondedWithAnError($response)
     {
-        return new static("Descriptive error message.");
+        return new static('Pivotal Tracker responded with an error: `' . $response->getBody()->getContents() . '`');
     }
 }

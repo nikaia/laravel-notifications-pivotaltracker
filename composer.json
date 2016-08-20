@@ -1,35 +1,40 @@
 {
-    "name": "laravel-notification-channels/:package_name",
-    "description": ":package_description",
-    "homepage": "https://github.com/laravel-notification-channels/:package_name",
+    "name": "laravel-notification-channels/pivotaltracker",
+    "description": "Pivotal Tracker Laravel Notifications driver",
+    "homepage": "https://github.com/laravel-notification-channels/pivotaltracker",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Nassif Bourguig",
+            "email": "nbourguig@gmail.com",
+            "homepage": "https://github.com/nbourguig",
             "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.6.4",
+        "guzzlehttp/guzzle": "~6.0",
         "illuminate/notifications": "^5.3@dev",
         "illuminate/support": "^5.3@dev",
         "illuminate/events": "^5.3@dev"
     },
     "require-dev": {
         "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "4.*"
+        "phpunit/phpunit": "4.*" ,
+        "orchestra/testbench": "^3.3@dev"
     },
     "autoload": {
         "psr-4": {
-            "NotificationChannels\\:channel_namespace\\": "src"
+            "NotificationChannels\\PivotalTracker\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "NotificationChannels\\:channel_namespace\\Test\\": "tests"
+            "NotificationChannels\\PivotalTracker\\Test\\": "tests"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "config": {
         "sort-packages": true
