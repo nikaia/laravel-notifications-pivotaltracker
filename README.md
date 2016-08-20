@@ -55,7 +55,7 @@ Now you can use the channel in your via() method inside the notification:
             return [PivotalTrackerChannel::class];
         }
     
-        public function toTrello($notifiable)
+        public function toPivotalTracker($notifiable)
         {
            return (new PivotalTrackerMessage('Something just occurred!'))
                        ->description('This is a test for a notification via Pivotal Tracker.')
